@@ -1,14 +1,19 @@
 <script setup>
-import json from './components/JSON.vue'
+import Json from './components/JSON.vue'
+import MyName from './components/MyName.vue'
 </script>
 
 <template>
   <header>
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+
+    <div class="wrapper">
+      <MyName />
+    </div>
   </header>
 
   <main>
-    <json />
+    <Json />
   </main>
 </template>
 
