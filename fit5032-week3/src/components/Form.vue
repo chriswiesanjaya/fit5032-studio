@@ -77,7 +77,7 @@
           </div>
           <div class="text-center">
             <button type="submit" class="btn btn-primary me-2">Submit</button>
-            <button type="submit" class="btn btn-secondary" @click="clearForm">Clear</button>
+            <button type="button" class="btn btn-secondary" @click="clearForm">Clear</button>
           </div>
         </form>
       </div>
@@ -123,6 +123,10 @@ const submitForm = () => {
   submittedCards.value.push({
     ...formData.value
   })
+}
+
+const clearForm = () => {
+  submittedCards.value = []
 }
 </script>
 
