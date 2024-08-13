@@ -177,8 +177,14 @@ const errors = ref({
 })
 
 const validateName = (blur) => {
-  if (formData.value.username.length < 3) {
-    if (blur) errors.value.username = 'Name must be at least 3 characters'
+  const username = formData.value.username
+  const minLength = 3
+  const hasAlphabetNumber = /^[A-Za-z0-9]+$/.test(username)
+
+  if (username.length < minLength) {
+    if (blur) errors.value.username = 'Name must be at least 3 characters.'
+  } else if (!hasAlphabetNumber) {
+    if (blur) errors.value.username = 'Name must contain alphabets and numbers only.'
   } else {
     errors.value.username = null
   }
@@ -209,15 +215,21 @@ const validatePassword = (blur) => {
 
 const validateGender = (blur) => {
   if (!formData.value.gender) {
-    if (blur) errors.value.gender = 'Gender must be selected'
+    if (blur) errors.value.gender = 'Gender must be selected.'
   } else {
     errors.value.gender = null
   }
 }
 
 const validateReason = (blur) => {
-  if (!formData.value.reason) {
-    if (blur) errors.value.reason = 'Reason for joining must be filled'
+  const reason = formData.value.reason
+  const minLength = 3
+  const letterCount = (reason.match(/[A-Za-z]/g) || []).length
+
+  if (!reason) {
+    if (blur) errors.value.reason = 'Reason for joining must be filled.'
+  } else if (letterCount < minLength) {
+    if (blur) errors.value.reason = 'Reason for joining must contain at least 3 alphabetic letters.'
   } else {
     errors.value.reason = null
   }
