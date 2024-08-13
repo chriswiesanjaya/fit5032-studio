@@ -127,8 +127,8 @@
       </div>
     </div>
     <div class="row mt-5" v-if="submittedCards.length">
-      <div class="d-flex flex-wrap justify-content-start">
-        <DataTable :value="submittedCards" table-style="min-width: 50rem">
+      <div class="justify-content-center">
+        <DataTable :value="submittedCards" tableStyle="width: 100%">
           <Column field="username" header="Username"></Column>
           <Column field="password" header="Password"></Column>
           <Column field="isAustralian" header="Australian Resident"></Column>
@@ -167,7 +167,7 @@ const submitForm = () => {
     !errors.value.reason
   ) {
     submittedCards.value.push({ ...formData.value })
-    clearForm()
+    // clearForm()
   }
 }
 
