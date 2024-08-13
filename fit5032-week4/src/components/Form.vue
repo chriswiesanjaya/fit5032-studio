@@ -76,7 +76,7 @@
                 class="form-select"
                 id="gender"
                 @blur="() => validateGender(true)"
-                @label="() => validateGender(false)"
+                @input="() => validateGender(false)"
                 v-model="formData.gender"
               >
                 <option value="male">Male</option>
@@ -92,8 +92,11 @@
               class="form-control"
               id="reason"
               rows="3"
+              @blur="() => validateReason(true)"
+              @input="() => validateReason(false)"
               v-model="formData.reason"
             ></textarea>
+            <div v-if="errors.reason" class="text-danger">{{ errors.reason }}</div>
           </div>
           <div class="text-center">
             <button type="submit" class="btn btn-primary me-2">Submit</button>
@@ -143,7 +146,13 @@ const submitForm = () => {
   validateName(true)
   validatePassword(true)
   validateGender(true)
-  if (!errors.value.username && !errors.value.password && !errors.value.gender) {
+  validateReason(true)
+  if (
+    !errors.value.username &&
+    !errors.value.password &&
+    !errors.value.gender &&
+    !errors.value.reason
+  ) {
     submittedCards.value.push({ ...formData.value })
     clearForm()
   }
@@ -203,6 +212,14 @@ const validateGender = (blur) => {
     if (blur) errors.value.gender = 'Gender must be selected'
   } else {
     errors.value.gender = null
+  }
+}
+
+const validateReason = (blur) => {
+  if (!formData.value.reason) {
+    if (blur) errors.value.reason = 'Reason for joining must be filled'
+  } else {
+    errors.value.reason = null
   }
 }
 </script>
