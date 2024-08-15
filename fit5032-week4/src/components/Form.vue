@@ -197,7 +197,7 @@ const validateName = (blur) => {
   if (username.length < minLength) {
     if (blur) errors.value.username = 'Name must be at least 3 characters.'
   } else if (!hasAlphabetNumber) {
-    if (blur) errors.value.username = 'Name must contain alphabets and numbers only.'
+    if (blur) errors.value.username = 'Name must contain letters and numbers only.'
   } else {
     errors.value.username = null
   }
@@ -242,7 +242,7 @@ const validateReason = (blur) => {
   if (!reason) {
     if (blur) errors.value.reason = 'Reason for joining must be filled.'
   } else if (letterCount < minLength) {
-    if (blur) errors.value.reason = 'Reason for joining must contain at least 3 alphabetic letters.'
+    if (blur) errors.value.reason = 'Reason for joining must contain at least 3 letters.'
   } else {
     errors.value.reason = null
   }
