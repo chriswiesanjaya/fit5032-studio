@@ -114,6 +114,7 @@
               v-model="formData.reason"
             ></textarea>
             <div v-if="errors.reason" class="text-danger">{{ errors.reason }}</div>
+            <!-- <div v-if="formData.value.reason.includes('friend')">Great to have a friend.</div> -->
           </div>
           <div class="text-center">
             <button type="submit" class="btn btn-primary me-2">Submit</button>
@@ -181,6 +182,7 @@ const submitForm = () => {
   if (
     !errors.value.username &&
     !errors.value.password &&
+    !errors.value.confirmPassword &&
     !errors.value.gender &&
     !errors.value.reason
   ) {
@@ -193,6 +195,7 @@ const clearForm = () => {
   formData.value = {
     username: '',
     password: '',
+    confirmPassword: '',
     isAustralian: false,
     reason: '',
     gender: ''
