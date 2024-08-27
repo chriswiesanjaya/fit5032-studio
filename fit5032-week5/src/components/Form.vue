@@ -114,7 +114,7 @@
               v-model="formData.reason"
             ></textarea>
             <div v-if="errors.reason" class="text-danger">{{ errors.reason }}</div>
-            <!-- <div v-if="formData.value.reason.includes('friend')">Great to have a friend.</div> -->
+            <div v-if="errors.friendMessage" class="text-success">{{ errors.friendMessage }}</div>
           </div>
           <div class="text-center">
             <button type="submit" class="btn btn-primary me-2">Submit</button>
@@ -268,6 +268,7 @@ const validateReason = (blur) => {
   const reason = formData.value.reason
   const minLength = 3
   const letterCount = (reason.match(/[A-Za-z]/g) || []).length
+  const containsFriend = /friend/i.test(reason)
 
   if (!reason) {
     if (blur) errors.value.reason = 'Reason for joining must be filled.'
@@ -276,6 +277,8 @@ const validateReason = (blur) => {
   } else {
     errors.value.reason = null
   }
+
+  errors.value.friendMessage = containsFriend ? 'Great to have a friend!' : null
 }
 </script>
 
