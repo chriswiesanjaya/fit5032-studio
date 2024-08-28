@@ -82,7 +82,7 @@ const validateConfirmPassword = (blur) => {
   }
 }
 
-const validateReason = (blur) => {
+const validateReason = () => {
   const reason = formData.value.reason
   const containsFriend = /friend/i.test(reason)
   errors.value.friendMessage = containsFriend ? 'Great to have a friend!' : null
