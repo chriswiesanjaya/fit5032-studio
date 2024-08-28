@@ -34,7 +34,9 @@ const router = useRouter()
 const login = () => {
   if (username.value === 'admin' && password.value === 'admin') {
     localStorage.setItem('isAuthenticated', 'true')
-    router.push('/')
+    router.push('/').then(() => {
+      window.location.reload()
+    })
   } else {
     error.value = 'Invalid credentials'
   }
