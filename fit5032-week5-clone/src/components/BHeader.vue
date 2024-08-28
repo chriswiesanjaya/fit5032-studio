@@ -9,13 +9,33 @@
             >Home (Week 5)</router-link
           >
         </li>
-        <li class="nav-item">
+        <li class="nav-item" v-if="isAuthenticated">
           <router-link to="/about" class="nav-link" active-class="active">About</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link v-if="!isAuthenticated" to="/login" class="nav-link" active-class="active"
+            >Login</router-link
+          >
+          <button v-if="isAuthenticated" class="btn btn-secondary" @click="logout">Logout</button>
         </li>
       </ul>
     </header>
   </div>
 </template>
+
+<script setup>
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+
+const isAuthenticated = ref(localStorage.getItem('isAuthenticated') === 'true')
+const router = useRouter()
+
+const logout = () => {
+  localStorage.removeItem('isAuthenticated')
+  isAuthenticated.value = false
+  router.push('/login')
+}
+</script>
 
 <style scoped>
 .b-example-divider {
