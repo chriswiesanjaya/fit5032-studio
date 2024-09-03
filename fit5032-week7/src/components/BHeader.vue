@@ -9,7 +9,7 @@
             >Home (Week 5)</router-link
           >
         </li>
-        <li class="nav-item" v-if="isAuthenticated">
+        <li class="nav-item">
           <router-link to="/about" class="nav-link" active-class="active">About</router-link>
         </li>
         <li class="nav-item">
@@ -20,23 +20,28 @@
             >Firebase Login</router-link
           >
         </li>
+        <li class="nav-item">
+          <router-link to="/FireRegister" class="nav-link" active-class="active"
+            >Firebase Register</router-link
+          >
+        </li>
       </ul>
     </header>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+// import { ref } from 'vue'
+// import { useRouter } from 'vue-router'
 
-const isAuthenticated = ref(localStorage.getItem('isAuthenticated') === 'true')
-const router = useRouter()
+// const isAuthenticated = ref(localStorage.getItem('isAuthenticated') === 'true')
+// const router = useRouter()
 
-const logout = () => {
-  localStorage.removeItem('isAuthenticated')
-  isAuthenticated.value = false
-  router.push('/login')
-}
+// const logout = () => {
+//   localStorage.removeItem('isAuthenticated')
+//   isAuthenticated.value = false
+//   router.push('/login')
+// }
 </script>
 
 <style scoped>
