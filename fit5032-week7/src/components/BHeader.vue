@@ -25,14 +25,47 @@
             >Firebase Register</router-link
           >
         </li>
+        <li class="nav-item">
+          <button v-if="isAuthenticatedFirebase" class="btn btn-secondary" @click="signout">
+            Firebase Logout
+          </button>
+        </li>
       </ul>
     </header>
   </div>
 </template>
 
 <script setup>
-// import { ref } from 'vue'
-// import { useRouter } from 'vue-router'
+import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth'
+
+const router = useRouter()
+const auth = getAuth()
+const isAuthenticatedFirebase = ref(false)
+
+// Check Firebase Authentication state
+onMounted(() => {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      isAuthenticatedFirebase.value = true
+    } else {
+      isAuthenticatedFirebase.value = false
+    }
+  })
+})
+
+const signout = () => {
+  signOut(auth)
+    .then((data) => {
+      console.log('Firebase Sign Out Successful!')
+      router.push('/FireLogin')
+      console.log(auth.currentUser)
+    })
+    .catch((error) => {
+      console.log(error.code)
+    })
+}
 
 // const isAuthenticated = ref(localStorage.getItem('isAuthenticated') === 'true')
 // const router = useRouter()
