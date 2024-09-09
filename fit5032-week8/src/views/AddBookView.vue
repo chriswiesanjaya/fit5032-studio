@@ -12,6 +12,7 @@
       </div>
       <button type="submit">Add Book</button>
     </form>
+    <BookList />
   </div>
 </template>
 
@@ -19,7 +20,7 @@
 import { ref } from 'vue'
 import db from '../firebase/init.js'
 import { collection, addDoc } from 'firebase/firestore'
-import BookList from '../components/Booklist.vue'
+import BookList from '../components/BookList.vue'
 
 export default {
   setup() {
