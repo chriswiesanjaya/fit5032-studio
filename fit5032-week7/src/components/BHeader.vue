@@ -26,7 +26,7 @@
           >
         </li>
         <li class="nav-item">
-          <button v-if="isAuthenticatedFirebase" class="btn btn-secondary" @click="signout">
+          <button v-if="isAuthenticatedFirebase" class="btn btn-secondary" @click="signoutFirebase">
             Firebase Logout
           </button>
         </li>
@@ -55,7 +55,8 @@ onMounted(() => {
   })
 })
 
-const signout = () => {
+// Firebase Log Out
+const signoutFirebase = () => {
   signOut(auth)
     .then((data) => {
       console.log('Firebase Sign Out Successful!')
