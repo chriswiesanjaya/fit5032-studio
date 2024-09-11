@@ -4,12 +4,12 @@
     <h1>Update Book</h1>
     <form @submit.prevent="updateBook">
       <div>
-        <label for="updateIsbn">ISBN:</label>
-        <input type="text" v-model="updateIsbn" id="updateIsbn" required />
+        <label for="isbn">ISBN:</label>
+        <input type="text" v-model="isbn" id="isbn" required />
       </div>
       <div>
-        <label for="updateName">New Name:</label>
-        <input type="text" v-model="updateName" id="updateName" required />
+        <label for="name">New Name:</label>
+        <input type="text" v-model="name" id="name" required />
       </div>
       <button type="submit">Update Book</button>
     </form>
