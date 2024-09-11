@@ -1,4 +1,5 @@
 <template>
+  <!-- Add Book Form -->
   <div>
     <h1>Add Book</h1>
     <form @submit.prevent="addBook">
@@ -13,6 +14,8 @@
       <button type="submit">Add Book</button>
     </form>
   </div>
+
+  <!-- Display List of Books -->
   <div>
     <BookList />
   </div>
