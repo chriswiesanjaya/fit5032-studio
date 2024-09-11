@@ -24,6 +24,11 @@
           >
         </li>
         <li class="nav-item">
+          <router-link to="/deletebook" class="nav-link" active-class="active"
+            >Delete Book</router-link
+          >
+        </li>
+        <li class="nav-item">
           <router-link to="/FireLogin" class="nav-link" active-class="active"
             >Firebase Login</router-link
           >

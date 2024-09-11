@@ -6,6 +6,7 @@ import FirebaseSignInView from '@/views/FirebaseSigninView.vue'
 import FirebaseRegisterView from '@/views/FirebaseRegisterView.vue'
 import AddBookView from '@/views/AddBookView.vue'
 import UpdateBookView from '@/views/UpdateBookView.vue'
+import DeleteBookView from '@/views/DeleteBookView.vue'
 
 const routes = [
   {
@@ -43,6 +44,11 @@ const routes = [
     path: '/updatebook',
     name: 'Update Book',
     component: UpdateBookView
+  },
+  {
+    path: '/deletebook',
+    name: 'Delete Book',
+    component: DeleteBookView
   }
 ]
 
