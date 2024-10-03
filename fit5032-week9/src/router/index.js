@@ -7,6 +7,8 @@ import FirebaseRegisterView from '@/views/FirebaseRegisterView.vue'
 import AddBookView from '@/views/AddBookView.vue'
 import UpdateBookView from '@/views/UpdateBookView.vue'
 import DeleteBookView from '@/views/DeleteBookView.vue'
+import { M } from 'vite/dist/node/types.d-aGj9QkWt'
+import GetBookCountView from '@/views/GetBookCountView.vue'
 
 const routes = [
   {
@@ -49,6 +51,11 @@ const routes = [
     path: '/deletebook',
     name: 'Delete Book',
     component: DeleteBookView
+  },
+  {
+    path: '/GetBookCount',
+    name: 'GetBookCount',
+    component: GetBookCountView
   }
 ]
 
