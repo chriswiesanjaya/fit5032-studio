@@ -97,7 +97,7 @@ export default {
         console.error('Error fetching weather data:', error)
       }
     },
-    // Search weather by city
+    // Show weather by searching city
     async searchByCity() {
       if (!this.city) return
       const url = `http://api.openweathermap.org/data/2.5/weather?q=${this.city}&appid=${apikey}`
