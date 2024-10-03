@@ -70,3 +70,28 @@ exports.addBooks = onRequest((req, res) => {
     }
   })
 })
+
+exports.showBooks = onRequest((req, res) => {
+  cors(req, res, async () => {
+    try {
+      const booksCollection = admin.firestore().collection('books')
+      const snapshot = await booksCollection.get()
+
+      // Check if there are any documents
+      if (snapshot.empty) {
+        return res.status(404).send('No books found')
+      }
+
+      // Extract data from documents
+      const books = snapshot.docs.map((doc) => ({
+        isbn: doc.data().isbn,
+        name: doc.data().name
+      }))
+
+      res.status(200).send({ books })
+    } catch (error) {
+      console.error('Error showing books: ', error.message)
+      res.status(500).send('Error showing books')
+    }
+  })
+})
