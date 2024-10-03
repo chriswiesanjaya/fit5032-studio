@@ -10,6 +10,7 @@ import DeleteBookView from '@/views/DeleteBookView.vue'
 // import { M } from 'vite/dist/node/types.d-aGj9QkWt'
 import GetBookCountView from '@/views/GetBookCountView.vue'
 import AddBookFunctionView from '@/views/AddBookFunctionView.vue'
+import WeatherView from '@/views/WeatherView.vue'
 
 const routes = [
   {
@@ -62,6 +63,11 @@ const routes = [
     path: '/AddBookFunction',
     name: 'AddBookFunction',
     component: AddBookFunctionView
+  },
+  {
+    path: '/WeatherCheck',
+    name: 'WeatherCheck',
+    component: WeatherView
   }
 ]
 
