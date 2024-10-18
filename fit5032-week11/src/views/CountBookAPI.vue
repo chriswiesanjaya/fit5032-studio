@@ -2,31 +2,26 @@
   <pre>{{ jsondata }}</pre>
 </template>
 
-<script>
+<script setup>
+import { ref, onMounted } from 'vue'
 import axios from 'axios'
 
-export default {
-  data() {
-    return {
-      jsondata: null,
-      error: null
-    }
-  },
-  mounted() {
-    this.getBookCountAPI()
-  },
-  methods: {
-    async getBookCountAPI() {
-      try {
-        const response = await axios.get('https://countbooks-2ofkbfwpmq-uc.a.run.app')
-        this.jsondata = response.data
-        this.error = null
-      } catch (error) {
-        console.log('Error fetching book count: ', error)
-        this.error = error
-        this.count = null
-      }
-    }
+const jsondata = ref(null)
+const error = ref(null)
+
+const getBookCountAPI = async () => {
+  try {
+    const response = await axios.get('https://countbooks-2ofkbfwpmq-uc.a.run.app')
+    jsondata.value = response.data
+    error.value = null
+  } catch (err) {
+    console.log('Error fetching book count: ', err)
+    error.value = err
+    jsondata.value = null
   }
 }
+
+onMounted(() => {
+  getBookCountAPI()
+})
 </script>
